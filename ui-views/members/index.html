@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sahana :: Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../semantic/dist/semantic.css">
+  <style>
+    .panels {
+      display: grid;
+    }
+    .panel{
+      display: none;
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0 !important;
+    }
+    .activated {
+      display: block;
+    }
+  </style>
+  <script src="../jqeury/jquery-3.1.1.min.js"></script>
+  <script src="../semantic/dist/semantic.js"></script>
+</head>
+<body>
+  <div class="ui container">
+    <div class="ui vertical segment">
+      <div class="ui hidden divider"></div>
+      <h2 class="ui header">
+        <i class="users icon"></i>
+        <div class="content" style="width:100%">
+          Members
+          <div class="sub header">
+            Manage Member Information
+            <div class="ui labels" style="float:right">
+              <div class="ui label" title="number of members">
+                <i class="users icon"></i>
+                24
+              </div> <!-- ui label -->
+            </div> <!-- ui lables -->
+          </div> <!-- sub header -->
+        </div> <!-- content -->
+      </h2> <!-- ui header -->
+    </div> <!-- ui vertical segment -->
+    <div id="mainmenu" class="ui pointing menu">
+      <a data-target="list" class="active item"><i class="list icon"></i>Members List</a>
+      <a data-target="add" class="green item"><i class="plus icon"></i> Add Member</a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui transparent icon input">
+            <input type="text" placeholder="Search Member...">
+            <i class="search link icon"></i>
+          </div> <!-- ui transparent icon input -->
+        </div> <!-- item -->
+      </div> <!-- right menu -->
+    </div> <!-- ui pointing menu -->
+    <div class="panels">
+
+      <!-- Panel for List of Members -->
+      <div id="list" class="ui segment activated panel">
+        <div class="ui three stackable link cards">
+          <div class="card">
+            <div class="image">
+              <img src="../figs/man.png" alt="man">
+            </div> <!-- image -->
+            <div class="content">
+              <div class="header">Ross Gellar</div>
+              <div class="meta">
+                <a>Joined in 2005 May 23</a>
+              </div> <!-- meta -->
+              <div class="description">
+                Member Details
+              </div> <!-- description -->
+            </div> <!-- content -->
+            <div class="ui bottom attached buttons">
+               <div data-tag="Ross Gellar" class="ui negative button retire">
+                  Retire
+               </div>
+               <div data-tag="1" class="ui button payment">
+                  Payments
+               </div>
+            </div>
+          </div> <!-- card -->
+          <div class="card">
+            <div class="image">
+              <img src="../figs/woman.png" alt="man">
+            </div> <!-- image -->
+            <div class="content">
+              <div class="header">Rachel Green</div>
+              <div class="meta">
+                <a>Joined in 2005 May 23</a>
+              </div> <!-- meta -->
+              <div class="description">
+                Member Details
+              </div> <!-- description -->
+            </div> <!-- content -->
+            <div class="ui bottom attached buttons">
+                <div data-tag="Rachel Green" class="ui negative button retire">
+                  Retire
+                </div>
+                <div data-tag="1" class="ui button payment">
+                  Payments
+                </div>
+            </div>
+          </div> <!-- card -->
+          <div class="card">
+            <div class="image">
+              <img src="../figs/man.png" alt="man">
+            </div> <!-- image -->
+            <div class="content">
+              <div class="header">Joey Tribbiani</div>
+              <div class="meta">
+                <a>Joined in 2005 May 23</a>
+              </div> <!-- meta -->
+              <div class="description">
+                Member Details
+              </div> <!-- description -->
+            </div> <!-- content -->
+            <div class="ui bottom attached buttons">
+                <div data-tag="Joey Tribbiani" class="ui negative button retire">
+                  Retire
+                </div>
+                <div data-tag="1" class="ui button payment">
+                  Payments
+                </div>
+            </div>
+          </div> <!-- card -->
+          <div class="card">
+            <div class="image">
+              <img src="../figs/woman.png" alt="man">
+            </div> <!-- image -->
+            <div class="content">
+              <div class="header">Pheobe Buffey</div>
+              <div class="meta">
+                <a>Joined in 2005 May 23</a>
+              </div> <!-- meta -->
+              <div class="description">
+                Member Details
+              </div> <!-- description -->
+            </div> <!-- content -->
+            <div class="ui bottom attached buttons">
+                <div data-tag="Pheobe Buffey" class="ui negative button retire">
+                  Retire
+                </div>
+                <div data-tag="1" class="ui button payment">
+                  Payments
+                </div>
+            </div>
+          </div> <!-- card -->
+          <div class="card">
+            <div class="image">
+              <img src="../figs/man.png" alt="man">
+            </div> <!-- image -->
+            <div class="content">
+              <div class="header">Chandler Bing</div>
+              <div class="meta">
+                <a>Joined in 2005 May 23</a>
+              </div> <!-- meta -->
+              <div class="description">
+                Member Details
+              </div> <!-- description -->
+            </div> <!-- content -->
+            <div class="ui bottom attached buttons">
+                <div data-tag="Chandler Bing" class="ui negative button retire">
+                  Retire
+                </div>
+                <div data-tag="1" class="ui button payment">
+                  Payments
+                </div>
+            </div>
+          </div> <!-- card -->
+          <div class="card">
+            <div class="image">
+              <img src="../figs/woman.png" alt="man">
+            </div> <!-- image -->
+            <div class="content">
+              <div class="header">Monica Gellar</div>
+              <div class="meta">
+                <a>Joined in 2005 May 23</a>
+              </div> <!-- meta -->
+              <div class="description">
+                Member Details
+              </div> <!-- description -->
+            </div> <!-- content -->
+            <div class="ui bottom attached buttons">
+                <div data-tag="Monica Gellar" class="ui negative button retire">
+                  Retire
+                </div>
+                <div data-tag="1" class="ui button payment">
+                  Payments
+                </div>
+            </div>
+          </div> <!-- card -->
+        </div>
+      </div>
+
+      <!-- Panel for Add Member form -->
+      <div id="add" class="ui segment panel">
+        <form action="#" method="post" class="ui form">
+          <h3 class="ui dividing header">
+            Add a New Member
+          </h3>
+          <div class="field">
+            <label>Name</label>
+            <div class="two fields">
+              <div class="field">
+                <input type="text" name="firstname" id="firstname" placeholder="First Name">
+              </div>
+              <div class="field">
+                <input type="text" name="lastname" id="lastname" placeholder="Last Name">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="retirement" class="ui basic mini modal">
+      <div class="ui icon header">
+        <i class="user times icon"></i>
+        Retire <span id="name"></span>
+      </div>
+      <div class="centered content">
+        <p>Are you sure? This action cannot be revoked later.</p>
+      </div>
+      <div class="actions">
+        <div class="ui red basic cancel inverted button">
+          <i class="remove icon"></i>
+          No
+        </div>
+        <div class="ui green ok inverted button">
+          <i class="checkmark icon"></i>
+          Yes
+        </div>
+      </div>
+    </div>
+  </div> <!-- ui container -->
+
+  <script>
+    $(document).ready(function () {
+      // main menu transitions
+      var items = $('#mainmenu a.item');
+      items.click(function() {
+        items.removeClass('active');
+        $(this).addClass('active');
+        var relatedPanel = $(this).data('target');
+        if (relatedPanel === undefined) { return; }
+        $('div.activated.panel').transition('slide left').removeClass('activated');
+        $('div.panel#'+relatedPanel).transition('slide right').addClass('activated');
+      })
+
+      // user retiring confirmation
+      $('.button.retire').click(function() {
+        $('.ui.basic.modal#retirement > .header > #name').text($(this).data('tag'));
+        $('.ui.basic.modal#retirement')
+          .modal({
+            onDeny: function() { console.log('denied'); },
+            onApprove: function() { console.log('approved'); }
+          })
+          .modal('show');
+      })
+
+    });
+  </script>
+</body>
+</html>

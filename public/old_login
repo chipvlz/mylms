@@ -1,0 +1,43 @@
+ public function _old_login()
+  {
+    $this->load->library('form_validation');
+
+    $next = 'users/index'; // next view to load after
+
+    $data['title'] = 'Sahana :: Login';
+    $data['formRules'] = "{ fields: { username: 'empty', password: 'empty' } } ";
+
+    $this->form_validation->set_rules('username', 'Username', 'required');
+    $this->form_validation->set_rules('password', 'Password', 'required');
+
+    $this->load->view('templates/header', $data);
+    if ($this->form_validation->run() == TRUE) {
+      $uname = $this->input->post('username');
+      $upass = $this->input->post('password');
+      if ($uname == $dbuser['username'] && $upass == $dbuser['userpass']) {
+        $next = 'templates/message';
+        $next_data['message_title'] = 'You have successfully logged in.';
+        $next_data['redirect'] = 'home';
+      } else {
+        $data['jqueries'] = array(
+          ".ui.error.message" => array(
+            "addClass" => "'visible'",
+            "text" => "'Incorrect Username/Password'"
+          ),
+          "button#submit" => array(
+            "transition" => "'shake'"
+          )
+          );
+      }
+    } else {
+      $data['jqueries'] = array(
+        ".ui.error.message" => array(
+          "addClass" => "'visible'",
+          "text" => "'Internal validation error occured."
+        )
+        );
+    }
+
+    $this->load->view($next);
+    $this->load->view('templates/footer', $data);
+  }
