@@ -24,7 +24,7 @@
               <input type="password" name="password" id="password" placeholder="Password">
             </div>
           </div>
-          <button id="submit" type="submit" class="ui fluid large blue submit button">
+          <button id="submit" type="submit" class="ui fluid large black submit button">
             Login
           </button>
         </div>
@@ -34,3 +34,22 @@
       </div>
     </div>
   </div>
+  <script>
+    $(document).ready(function () {
+      $('.ui.form').form({
+        fields: {
+          username: 'empty',
+          password: 'empty'
+        }
+      });
+      if (result.error !== null) {
+        $('.ui.error.message')
+          .addClass('visible')
+          .text(result.error.message);
+        if (result.error.type === 'auth') {
+          $('button#submit')
+            .transition('shake');
+        }
+      }
+    })
+  </script>

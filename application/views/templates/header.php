@@ -10,12 +10,31 @@
     body > .grid {
       height: 100%;
     }
-    .image {
-      margin-top: -100px;
-    }
     .column {
       max-width: 450px;
     }
+    .panels {
+      display: grid;
+    }
+    .panel {
+      display: none;
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0 !important;
+    }
+    .activated {
+      display: block;
+    }
+    .deactivated {
+      display: none;
+    }
   </style>
+  <script src=<?php echo base_url('public/jquery/jquery-3.1.1.min.js'); ?>></script>
+  <script src=<?php echo base_url('public/semantic/dist/semantic.js'); ?>></script>
+<?php if (isset($result)): ?>
+  <script>
+    var result = <?= $result; ?>;
+  </script>
+<?php endif; ?>
 </head>
 <body>
