@@ -1,32 +1,45 @@
 <?php
-class Member extends CI_Controller
+class Members extends CI_Controller
 {
     public function __construct()
 	{
 		parent::__construct();
 
 		$this->load->model('Members_model');
-		$this->load->library('form_validation');
+        $this->load->library('form_validation');
     }
 
 
     public function index()
 	{
-		$this->data['member_list'] = $this->Members_model->get_all();
-
-        $this->load->view('templates/header');
+		$db_member = $this->Members_model->get_all();
 
         //member/index view of all the members in a table
-        $this->load->view('members/index', $this->data);
+        $members = array();
+        foreach ($db_member as $db_member) {
+            $member['id'] = $db_member['id'];
+            $member['fullname'] = $db_member['firstName'].' '.$db_member['lastName'];
+            $member['joinedOn'] = $db_member['registrationDate'];
+            $member['details'] = $db_member['address1'].','.$db_member['address2'].','.$db_member['address3'];
+            $member['image'] = '../figs/man.png';
+            array_push($members, $member);
+        }
+        $data['result'] = json_encode(array(
+            'data' => array(
+                'users' => $members
+            )
+        ));
+        $data['title'] = 'Members';
 
+        $this->load->view('templates/header', $data);
+        $this->load->view('members/index');
         $this->load->view('templates/footer');
 
     }
+
     public function view($id)
     {
         $this->data['view_member'] = $this->Members_model->get_member($id);
-
-
 
         $this->load->view('templates/header' );
         $this->load->view('members/view', $this->data);
