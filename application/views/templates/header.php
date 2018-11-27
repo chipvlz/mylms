@@ -1,30 +1,40 @@
-
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php echo $title; ?></title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css'>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Jura'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href=<?php echo base_url('public/semantic/dist/semantic.css'); ?>>
   <style>
-    .logo-font { font-family: 'Jura', sans-serif; }
-    html { height: 100%; }
-    body { min-height: 100%; }
+    body > .grid {
+      height: 100%;
+    }
+    .column {
+      max-width: 450px;
+    }
+    .panels {
+      display: grid;
+    }
+    .panel {
+      display: none;
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0 !important;
+    }
+    .activated {
+      display: block;
+    }
+    .deactivated {
+      display: none;
+    }
   </style>
+  <script src=<?php echo base_url('public/jquery/jquery-3.1.1.min.js'); ?>></script>
+  <script src=<?php echo base_url('public/semantic/dist/semantic.js'); ?>></script>
+<?php if (isset($result)): ?>
+  <script>
+    var result = <?= $result; ?>;
+  </script>
+<?php endif; ?>
 </head>
 <body>
-  <nav class="navbar is-primary" role="navigation" aria-label="main-navigation">
-    <div class="container">
-      <div class="navbar-brand">
-        <a class="navbar-item is-size-4 has-text-weight-bold logo-font" href="#">
-          <?php echo $site_name; ?>
-        </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarLinks">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-    </div>
-  </nav>
