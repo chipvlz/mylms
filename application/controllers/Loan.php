@@ -4,7 +4,7 @@ class Loan extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('loan_model');
+		$this->load->model('Loan_model');
 		$this->load->library('form_validation');
     }
     
@@ -92,6 +92,15 @@ class Loan extends CI_Controller
 		redirect('loan/index');
 	}
     
+    function settle_loan($id) 
+    {
+        $this->load->model('Transaction_model');
+		$this->loan_model->delete_loan($id);
+		
+		$this->session->set_flashdata('message', '<p>loan were successfully deleted!</p>');
+		
+		redirect('loan/index');
+	}
 	
     
 }
