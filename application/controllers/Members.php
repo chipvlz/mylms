@@ -1,11 +1,16 @@
 <?php
+
+
 class Member extends CI_Controller 
 {
     public function __construct()
 	{
 		parent::__construct();
 
-		$this->load->model('Members_model');
+        $this->load->model('Members_model');
+        $this->load->model('Welfarefree_model');
+        $this->load->model('Expense_model');
+        $this->load->model('MembershipFree_model');
 		$this->load->library('form_validation');
     }
     
@@ -101,7 +106,36 @@ class Member extends CI_Controller
 		redirect('members/index');
 	}
     
-	
+    
+    //Membership fee functions
+	public function submit_membership_fee()
+    {
+    $data = array( 'date'           => date("m/d/y h:i:s"),
+                   'amount'         => $this->input->post('amount'),
+                   'memberId'       => $this->input->post('memberId'),
+                  
+                );
+    
+    $this->Members_model->insert_membership_fee($data);
+    $this->session->set_flashdata('message', 'Your data inserted Successfully..');
+    redirect(' ');//redirect to  
+
+    }
+
+    //find whether welfare fee is >50000
+
+    public function check_welfare_fee(){
+    //get the sum of the  amount column in welfare table using the model
+    $wel_sum =$this->Welfarefee_model->get_welfare_amount();
+    //get the sum of the  amount column in expense table using the model
+    $expense_sum =$this->Expense_model->get_expense_amount();
+    
+    if (($wel_sum-$expense_sum)>50000){
+        return true;
+    }else 
+        return false;
+    }
+
     
 }
 ?>
