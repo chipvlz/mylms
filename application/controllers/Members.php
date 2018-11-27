@@ -1,10 +1,9 @@
 <?php
-class Member extends CI_Controller
+class Members extends CI_Controller
 {
     public function __construct()
 	{
 		parent::__construct();
-
         $this->load->model('Members_model');
         $this->load->model('Welfarefree_model');
         $this->load->model('Expense_model');
@@ -23,14 +22,10 @@ class Member extends CI_Controller
         $this->load->view('members/index', $this->data);
 
         $this->load->view('templates/footer');
-
     }
     public function view($id)
     {
         $this->data['view_member'] = $this->Members_model->get_member($id);
-
-
-
         $this->load->view('templates/header' );
         $this->load->view('members/view', $this->data);
         $this->load->view('templates/footer');
@@ -53,6 +48,7 @@ class Member extends CI_Controller
 
     }
 
+
     function edit_product($id)
     {
 		//$product = $this->Products_model->get_product($product_id);
@@ -64,9 +60,6 @@ class Member extends CI_Controller
         $this->form_validation->set_rules('address2', 'Address line2', 'required|xss_clean');
         $this->form_validation->set_rules('address3', 'Address line3', 'required|xss_clean');
         $this->form_validation->set_rules('mobile', 'Mobile no', 'required|xss_clean');
-
-
-
 			if ($this->form_validation->run() == false)
 			{
                 //get the current membert info
