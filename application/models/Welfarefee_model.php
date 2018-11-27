@@ -40,3 +40,12 @@ class Welfarefee_model extends CI_Model
     $this->db->update('welfarefee', $data );
   }
 }
+  public function get_welfare_amount()
+  {
+    //get the sum of the amount column
+    $this->db->select_sum('amount');
+    $result = $this->db->get('welfarefee')->row();  
+    return $result->amount;   
+  }
+}
+?>
