@@ -44,7 +44,7 @@ class Users extends CI_Controller
           'data' => null,
           'error' => array(
             'type' => 'auth',
-            'message' => 'Invalid username or password!!!'
+            'message' => 'Invalid username or password'
           )
         ));
       }
