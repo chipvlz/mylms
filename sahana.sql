@@ -120,6 +120,21 @@ CREATE TABLE `welfarefee` (
   `memberId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) PRIMARY KEY AUTO_INCREMENT,
+  `first_name` varchar(25) NOT NULL,
+  `last_name` varchar(25) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `userpass` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --

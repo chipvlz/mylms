@@ -38,16 +38,15 @@ class Users extends CI_Controller
         );
         $this->session->set_userdata($userdata);
       } else {
+        // access denied
         $next = 'users/login';
-        $data['jqueries'] = array(
-          '.ui.error.message' => array(
-            'addClass' => "'visible'",
-            'text' => "'Invalid username or password'"
-          ),
-          'button#submit' => array(
-            'transition' => "'shake'"
+        $data['result'] = json_encode(array(
+          'data' => null,
+          'error' => array(
+            'type' => 'auth',
+            'message' => 'Invalid username or password'
           )
-          );
+        ));
       }
     } else {
       // check current_user alternatively
@@ -68,7 +67,6 @@ class Users extends CI_Controller
     }
 
     $data['title'] = 'Sahana :: Login';
-    $data['formRules'] = "{ fields: { username: 'empty', password: 'empty' } } ";
 
     $this->load->view('templates/header', $data);
     $this->load->view($next, $data);

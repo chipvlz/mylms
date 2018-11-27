@@ -8,24 +8,44 @@ class Members_model extends CI_Model
     $this->load->database();
   }
 
-  public function put_user($data)
+  public function insert_memeber($data)
   {
-    // $data: assoc array of user details.
-    // insert user to the database
+    // $data: assoc array of member details.
+    // insert member to the database
+    $this->db->insert('member',$data);
   }
 
-  public function get_user($data)
+
+  public function get_member($id)
   {
-    // get user by given attributes.
+    // get member details by given id in member table
+    $this->db->where('id', $id);
+    $query=$this->db->get('member');
+    return $query->row();
+
   }
 
-  public function delete_user($data)
+  public function get_all()
   {
-    // delete user by given attributes.
+    // get members details by  member table
+    $this->db->select("*");  
+    $this->db->from("member");  
+    $query = $this->db->get();  
+    return $query;  
+
   }
 
-  public function update_user($data)
+  public function delete_member($id)
   {
-    // update user by given attributes.
+    // delete member details by given id in member table
+    $this->db->where('id', $id);
+    $this->db->delete('member');
+  }
+
+  public function update_user($data ,$id)
+  {
+    // update member details by given id in member table.
+    $this->db->where('id' , $id);
+    $this->db->update('member', $data );
   }
 }

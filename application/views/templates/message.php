@@ -12,9 +12,21 @@
           <?= $message_title ?>
         </div>
         <p>You will be redirected to the next page in
-        <span id="eta">5</span> seconds. click <a href="<?= site_url($redirect) ?>">here</a>
+        <span id="eta">5</span> seconds. click <a id="next" href="<?= site_url($redirect) ?>">here</a>
         If you don't want to wait</p>
       </div>
     </div>
   </div>
 </div>
+<script>
+  $(document).ready(function() {
+    var eta = 5; // seconds
+    setInterval(function() {
+      if (eta === 0) {
+        window.location = '<?= site_url($redirect) ?>';
+      } else {
+        $('#eta').text(eta--);
+      }
+    }, eta * 1000);
+  });
+</script>
