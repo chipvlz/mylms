@@ -8,7 +8,7 @@ class Members_model extends CI_Model
     $this->load->database();
   }
 
-  public function insert_memeber($data)
+  public function insert_member($data)
   {
     // $data: assoc array of member details.
     // insert member to the database

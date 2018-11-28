@@ -5,10 +5,12 @@ class Members extends CI_Controller
 	{
 		parent::__construct();
         $this->load->model('Members_model');
-        $this->load->model('Welfarefree_model');
+        $this->load->model('Welfarefee_model');
         $this->load->model('Expense_model');
-        $this->load->model('MembershipFree_model');
-		$this->load->library('form_validation');
+        $this->load->model('MembershipFee_model');
+        $this->load->library('form_validation');
+        $this->load->library('session');
+        $this->load->helper('form');
     }
 
 
@@ -46,15 +48,15 @@ class Members extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function submit_data()
+    public function add()
     {
-    $data = array('firstName'                  => $this->input->post('first_name'),
-                  'lastName'                   => $this->input->post('last_name'),
+    $data = array('firstName'                   => $this->input->post('firstname'),
+                  'lastName'                    => $this->input->post('lastname'),
                   'address1'                    => $this->input->post('address1'),
                   'address2'                    => $this->input->post('address2'),
                   'address3'                    => $this->input->post('address3') ,
-                  'registrationDate'           => date("m/d/y h:i:s"),
-                  'mobile'                      =>$this->input->post('mobile')
+                  'registrationDate'            => date("m/d/y h:i:s"),
+                  'mobile'                      => $this->input->post('mobile')
                 );
 
     $this->Members_model->insert_member($data);
@@ -90,8 +92,8 @@ class Members extends CI_Controller
                     'lastName'                   => $this->input->post('last_name'),
                     'address1'                    => $this->input->post('address1'),
                     'address2'                    => $this->input->post('address2'),
-                    'address3'                    => $this->input->post('address3') ,
-                    'registrationDate'           => date("m/d/y h:i:s"),
+                    'address3'                    => $this->input->post('address3'),
+                    'registrationDate' => date('Y-m-d'),
                     'mobile'                      =>$this->input->post('mobile'));
 
                 if($this->Members_model->update_member($id, $data))

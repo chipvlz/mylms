@@ -22,10 +22,10 @@ class Welfarefee_model extends CI_Model
   public function get_all()
   {
     // get welfarefees details by  welfarefee table
-    $this->db->select("*");  
-    $this->db->from("welfarefee");  
-    $query = $this->db->get();  
-    return $query;  
+    $this->db->select("*");
+    $this->db->from("welfarefee");
+    $query = $this->db->get();
+    return $query;
   }
   public function delete_welfarefee($id)
   {
@@ -39,13 +39,13 @@ class Welfarefee_model extends CI_Model
     $this->db->where('id' , $id);
     $this->db->update('welfarefee', $data );
   }
-}
+
   public function get_welfare_amount()
   {
     //get the sum of the amount column
     $this->db->select_sum('amount');
-    $result = $this->db->get('welfarefee')->row();  
-    return $result->amount;   
+    $result = $this->db->get('welfarefee')->row();
+    return $result->amount;
   }
 }
 ?>

@@ -45,7 +45,7 @@
 
       <!-- Panel for Add Member form -->
       <div id="add" class="ui segment panel">
-        <form action="#" method="post" class="ui form">
+        <?php echo form_open('members/add', array('class' => 'ui form')); ?>
           <h3 class="ui dividing header">
             Add a New Member
           </h3>
@@ -59,7 +59,31 @@
                 <input type="text" name="lastname" id="lastname" placeholder="Last Name">
               </div>
             </div>
+          <div class="field">
+            <label>Address</label>
+            <div class="two fields">
+              <div class="field">
+                <input type="text" name="address1" id="address1" placeholder="Address Line 1">
+              </div>
+              <div class="field">
+                <input type="text" name="address2" id="address2" placeholder="Address Line 2">
+              </div>
+              <div class="field">
+                <input type="text" name="address3" id="address3" placeholder="Address Line 3">
+              </div>
+            </div>
+          <div class="field">
+            <label>Contact Details</label>
+            <div class="two fields">
+              <div class="field">
+                <input type="text" name="email" id="email" placeholder="Email address">
+              </div>
+              <div class="field">
+                <input type="text" name="mobile" id="mobile" placeholder="Mobile No">
+              </div>
+            </div>
           </div>
+          <button type="submit" class="ui black button">Submit</button>
         </form>
       </div>
     </div>
@@ -162,6 +186,15 @@
   }
 
   $(document).ready(function () {
+    $('.ui.form').form({
+      fields: {
+        firstname: 'empty',
+        lastname: 'empty',
+        address1: 'empty',
+        address2: 'empty',
+        mobile: 'empty'
+      }
+    });
     // main menu transitions
     var items = $('#mainmenu a.item');
     items.click(function() {
