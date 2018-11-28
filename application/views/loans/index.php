@@ -47,7 +47,6 @@
               <th>Issued For</th>
               <th>Amount</th>
               <th>Interest Rate</th>
-              <th>Comments</th>
               <th>Actions</th>
             </tr>
             <tr>
@@ -59,7 +58,6 @@
               </td>
               <td>Rs. 15000</td>
               <td>15%</td>
-              <td>No Comments</td>
               <td class="collapsing">
                 <div class="ui fitted buttons">
                   <a href="#" class="ui blue button">Settle</a>
@@ -71,21 +69,35 @@
         </table>
       </div>
       <div id="add" class="ui segment panel">
-        <form action="#" method="post" class="ui form">
+        <?php echo form_open('loans/add', array('class' => 'ui form')); ?>
           <h3 class="ui dividing header">
-            Add a New Member
+            Add a New Loan
           </h3>
           <div class="field">
-            <label>Name</label>
-            <div class="two fields">
-              <div class="field">
-                <input type="text" name="firstname" id="firstname" placeholder="First Name">
-              </div>
-              <div class="field">
-                <input type="text" name="lastname" id="lastname" placeholder="Last Name">
-              </div>
-            </div>
+            <label>Member ID</label>
+            <input type="text" name="memberId" id="memberId">
           </div>
+          <div class="field">
+            <label>Amount</label>
+            <input type="text" name="amount" id="amount">
+          </div>
+          <div class="field">
+            <label>Loan type</label>
+            <input type="text" name="loanType" id="loanType">
+          </div>
+          <div class="field">
+            <label>Interest</label>
+            <input type="text" name="interest" id="interest">
+          </div>
+          <div class="field">
+            <label>Issue Date</label>
+            <input type="text" name="issueDate" id="issueDate">
+          </div>
+          <div class="field">
+            <label>Due Date</label>
+            <input type="text" name="dueDate" id="dueDate">
+          </div>
+          <button type="submit" class="ui black button">Submit</button>
         </form>
       </div>
     </div>

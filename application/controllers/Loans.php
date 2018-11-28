@@ -43,23 +43,25 @@ class Loans extends CI_Controller
         $this->data['view_loan'] = $this->loan_model->get_loan($id);
         $this->data['title'] = 'Loan View';
         $this->load->view('templates/header', $this->data);
-        $this->load->view('loan/view', $this->data);
+        $this->load->view('loans/view', $this->data);
         $this->load->view('templates/footer');
     }
-    public function submit_data()
+    public function add()
     {
-    $data = array('amount'                      => $this->input->post('amount'),
-                  'interest'                    => $this->input->post('interest'),
-                  'loanType'                    => $this->input->post('loanType'),
-                  'issueDate'                   => $this->input->post('issueDate'),
-                  'dueDate'                     => $this->input->post('dueDate') ,
-                  'memberId'                    =>$this->input->post('memberId')
-                );
+        $data = array(
+            'amount' => $this->input->post('amount'),
+            'interest' => $this->input->post('interest'),
+            'loanType' => $this->input->post('loanType'),
+            'issueDate' => $this->input->post('issueDate'),
+            'dueDate'  => $this->input->post('dueDate') ,
+            'memberId' =>$this->input->post('memberId')
+        );
 
-    $this->loan_model->insert_loan($data);
-    $this->session->set_flashdata('message', 'Your data inserted Successfully..');
-    redirect('loan/index');
+        $this->loan_model->insert_loan($data);
+        $this->session->set_flashdata('message', 'Your data inserted Successfully..');
+        redirect('loan/index');
     }
+
     function edit_loan($id)
     {
 		//$product = $this->Products_model->get_product($product_id);
@@ -113,11 +115,11 @@ class Loans extends CI_Controller
         $this->load->model('Transaction_model');
 
         $data = array(
-            'source'                     => $this->input->post('source'),
-            'type'                       => $this->input->post('type'),
-            'description'                => $this->input->post('description'),
-            'issueDate'                  => $this->input->post('issueDate'),
-            'amount'                  => $this->input->post('amount')
+            'source' => $this->input->post('source'),
+            'type' => $this->input->post('type'),
+            'description' => $this->input->post('description'),
+            'issueDate' => $this->input->post('issueDate'),
+            'amount' => $this->input->post('amount')
             );
         //inserting the transaction
         $this->Transaction_model->insert_transaction($data);
