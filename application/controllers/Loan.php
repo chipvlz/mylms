@@ -92,15 +92,53 @@ class Loan extends CI_Controller
 		redirect('loan/index');
 	}
     
-    function settle_loan($id) 
+    function settle_loan($id)
     {
         $this->load->model('Transaction_model');
-		$this->loan_model->delete_loan($id);
-		
-		$this->session->set_flashdata('message', '<p>loan were successfully deleted!</p>');
-		
-		redirect('loan/index');
-	}
+
+        $data = array(
+            'source'                     => $this->input->post('source'),
+            'type'                       => $this->input->post('type'),
+            'description'                => $this->input->post('description'),
+            'issueDate'                  => $this->input->post('issueDate'),
+            'amount'                  => $this->input->post('amount')
+            );
+        //inserting the transaction
+        $this->Transaction_model->insert_transaction($data);
+
+        //load all transaction to calculate weather its settle the loan
+        $allTransaction=$this->Transaction_model->get_all();
+        $totalPayment=0;
+        foreach($allTransaction as $transaction)
+        {
+            $loanId=$transaction->source;
+            if($loanId==$id)
+            {
+                $totalPayment+=$transaction->amount;
+            }
+        }
+        $loan=$this->loan_model->get_loan($id);
+        if($loan->amount<$totalPayment)
+        {
+
+        }
+        else
+        {
+            $data = array(
+                'amount'                        => $loan->amount,
+                'interest'                      => $loan->interest,
+                'loanType'                      => $loan->loanType,
+                'issueDate'                     => $loan->issueDate,
+                'dueDate'                       => $loan->dueDate ,
+                'memberId'                      => $loan->memberId,
+                'settleDate'                    =>$this->input->post('issueDate')
+            );
+            if($this->loan_model->update_loan($id, $data))
+                {
+				   $this->session->set_flashdata('message', "<p>loan is setteled.</p>");
+                }
+        }
+    }
 	
     
 }
