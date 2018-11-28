@@ -55,7 +55,7 @@ class Members extends CI_Controller
                   'address1'                    => $this->input->post('address1'),
                   'address2'                    => $this->input->post('address2'),
                   'address3'                    => $this->input->post('address3') ,
-                  'registrationDate'            => date("m/d/y h:i:s"),
+                  'registrationDate'            => date("Y-m-d"),
                   'mobile'                      => $this->input->post('mobile')
                 );
 

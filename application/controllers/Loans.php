@@ -4,7 +4,7 @@ class Loans extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Loan_model');
+		$this->load->model('loan_model');
 		$this->load->library('form_validation');
     }
 
@@ -23,10 +23,8 @@ class Loans extends CI_Controller
     public function view($id)
     {
         $this->data['view_loan'] = $this->loan_model->get_loan($id);
-
-
-
-        $this->load->view('templates/header' );
+        $this->data['title'] = 'Loan View';
+        $this->load->view('templates/header', $this->data);
         $this->load->view('loan/view', $this->data);
         $this->load->view('templates/footer');
     }
