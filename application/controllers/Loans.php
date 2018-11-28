@@ -5,19 +5,37 @@ class Loans extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('loan_model');
-		$this->load->library('form_validation');
+        $this->load->library('form_validation');
+        $this->load->library('session');
+        $this->load->helper('form');
     }
 
 
     public function index()
 	{
-		$this->data['loan_list'] = $this->loan_model->get_all();
+        $db_loan=$this->loan_model->get_all();
+        $loans = array();
+        foreach ($db_loan as $db_loan) {
+            $loan['id'] = $db_loan['id'];
+            $loan['amount'] = $db_loan['amount'];
+            $loan['interest'] = $db_loan['interest'];
+            $loan['loanType'] = $db_loan['loanType'];
+            $loan['issueDate'] = $db_loan['issueDate'];;
+            $loan['dueDate'] = $db_loan['dueDate'];
+            $loan['memberId'] = $db_loan['memberId'];
+            $loan['settleDate'] = $db_loan['settleDate'];
+            array_push($loans, $loan);
+        }
+        $data['result'] = json_encode(array(
+            'data' => array(
+                'loans' => $loans
+            )
+        ));
+        $data['title'] = 'Loans';
 
-		//loan/index view of all the loan in a table
-        $this->load->view('loan/index', $this->data);
-
-        $this->load->view('templates/header');
-        $this->load->view('templates/footer' );
+        $this->load->view('templates/header', $data);
+        $this->load->view('loans/index');
+        $this->load->view('templates/footer');
 
     }
     public function view($id)
